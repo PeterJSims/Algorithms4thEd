@@ -1,6 +1,7 @@
 package ch01.part4.notes;
 
-import ch01.part1.exercises.BinarySearch;
+
+import edu.princeton.cs.algs4.BinarySearch;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
