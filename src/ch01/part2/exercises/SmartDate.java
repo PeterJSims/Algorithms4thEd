@@ -125,6 +125,6 @@ public class SmartDate extends Date {
         int y = Integer.parseInt(args[2]);
         SmartDate date = new SmartDate(m, d, y);
         StdOut.println(date);
-
+        StdOut.println(date.dayOfTheWeek());
     }
 }
