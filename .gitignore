@@ -1,1 +1,5 @@
 src/data
+.DS_Store
+.idea/
+AlgorithmsBook.iml
+out/
