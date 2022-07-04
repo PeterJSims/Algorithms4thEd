@@ -1,73 +1,43 @@
 package ch01.part3.notes;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
 
-public class FixedCapacityStack<T> implements Iterable<T> {
-    private T a[];
-    private int N;
-    private int max;
+public class FixedCapacityStack<Item> {
+    private Item[] a;
+    private int n;
 
-    public FixedCapacityStack(int max) {
-        this.a = (T[]) new Object[max];
-        this.max = max;
-
+    public FixedCapacityStack(int capacity) {
+        a = (Item[]) new Object[capacity];
     }
 
     public boolean isEmpty() {
-        return N == 0;
-    }
-
-    public boolean isFull() {
-        return N == max;
+        return n == 0;
     }
 
     public int size() {
-        return N;
+        return n;
     }
 
-    public void push(T item) {
-        if (isFull()) {
-            throw new StackOverflowError("Stack overflow");
-        }
-        a[N++] = item;
+    public void push(Item item) {
+        a[n++] = item;
     }
 
-    public T pop() {
-        if (N <= 0) {
-            throw new NoSuchElementException("Stack underflow");
-        }
-        return a[--N];
+    public Item pop() {
+        return a[--n];
     }
-
-    public Iterator<T> iterator() {
-        return null;
-    }
-
-    public class StackIterator implements Iterator<T> {
-        private int i;
-
-        public StackIterator(int i) {
-            this.i = N;
-        }
-
-        public boolean hasNext() {
-            return i > 0;
-        }
-
-        public T next() {
-            if (i == 0) {
-                throw new NoSuchElementException();
-            }
-            return a[--i];
-        }
-    }
-
 
     public static void main(String[] args) {
-        FixedCapacityStack<Integer> stack = new FixedCapacityStack<>(2);
-        stack.push(5);
-        stack.push(4);
-//        stack.push(6);
+        FixedCapacityStack<String> stack = new FixedCapacityStack<>(100);
+
+        while (!StdIn.isEmpty()) {
+            String item = StdIn.readString();
+            if (!item.equals("-")) {
+                stack.push(item);
+            } else if (!stack.isEmpty()) {
+                StdOut.print(stack.pop() + " ");
+            }
+        }
+        StdOut.println("(" + stack.size() + " left on stack)");
     }
 }

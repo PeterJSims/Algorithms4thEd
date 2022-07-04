@@ -8,9 +8,9 @@ public class TransactionExercise {
     // Ex 13 and Ex 14
     private final String who;
     private final SmartDate when;
-    private final int amount;
+    private final double amount;
 
-    public TransactionExercise(String who, SmartDate when, int amount) {
+    public TransactionExercise(String who, SmartDate when, double amount) {
         this.who = who;
         this.when = new SmartDate(when.month(), when.day(), when.year());
         this.amount = amount;
@@ -29,7 +29,7 @@ public class TransactionExercise {
     }
 
     public String toString() {
-        return who + " spent $" + amount + " on " + when;
+        return who + " " + when + " " + amount;
     }
 
     public boolean equals(Object o) {
@@ -46,7 +46,7 @@ public class TransactionExercise {
     public static void main(String[] args) {
         String who = "Bob";
         SmartDate when = new SmartDate(3, 3, 2022);
-        int amount = 55;
+        double amount = 55.40;
         TransactionExercise transaction = new TransactionExercise(who, when, amount);
         StdOut.println(transaction);
 
