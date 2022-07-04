@@ -1,11 +1,13 @@
 package ch01.part3.exercises;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class StackExercises<Item> implements Iterable<Item> {
     private Item a[];
     private int n;
+    private int operations;
 
     public StackExercises() {
         this.a = (Item[]) new Object[1];
@@ -31,6 +33,7 @@ public class StackExercises<Item> implements Iterable<Item> {
     public void push(Item item) {
         if (n == a.length) resize(2 * a.length);
         a[n++] = item;
+        operations++;
     }
 
     public Item peek() {
@@ -47,6 +50,7 @@ public class StackExercises<Item> implements Iterable<Item> {
         Item item = a[--n];
         a[n] = null;
         if (n > 0 && a.length == n / 4) resize(a.length / 2);
+        operations++;
         return item;
     }
 
@@ -56,14 +60,21 @@ public class StackExercises<Item> implements Iterable<Item> {
 
     private class StackIterator implements Iterator<Item> {
         int i = n - 1;
+        int parentOperations = operations;
 
         public boolean hasNext() {
+            if (parentOperations != operations) {
+                throw new ConcurrentModificationException("Collection was edited during iteration");
+            }
             return i >= 0;
         }
 
         public Item next() {
             if (i < 0) {
                 throw new NoSuchElementException();
+            }
+            if (parentOperations != operations) {
+                throw new ConcurrentModificationException("Collection was edited during iteration");
             }
             return a[i--];
         }
