@@ -11,7 +11,6 @@ public class Bag<Item> implements Iterable<Item> {
         Node next;
     }
 
-
     public void add(Item item) {
         Node oldFirst = first;
         first = new Node();

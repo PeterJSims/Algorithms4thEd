@@ -3,10 +3,8 @@ package ch01.part4.notes;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 public class DoublingRatio {
-    @SuppressFBWarnings("DLS_DEAD_LOCAL_STORE")
     public static double timeTrial(int n) {
         // Time ThreeSum.count() for n random 6-digit integers
         int MAX = 1000000;

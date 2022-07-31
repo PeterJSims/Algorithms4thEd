@@ -1,0 +1,11 @@
+
+
+Tilde notation for the following expressions:
+
+     a. n + 1                ~ n
+     b. 1 + 1/n              ~ 1
+     c. (1 + 1/n)(1 + 2/n)   ~ 1
+     d. 2n3 - 15n2 + n       ~ 2n3
+     e. lg(2n) / lg n        ~ 1
+     f. lg(n2 + 1) / lg n    ~ 2 (lg(N²+1)/lg(N) approx. = lg(N²)/lg(N) = 2lg(N)/lg(N) = 2 )
+     g. n100 / 2^n           ~ 0  (https://math.stackexchange.com/questions/1455546/lim-limits-n-to-infty-fracn1002n-prove-using-epsilon-definition)

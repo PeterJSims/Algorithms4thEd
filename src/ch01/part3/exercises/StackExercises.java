@@ -1,84 +1,83 @@
 package ch01.part3.exercises;
 
-import java.util.ConcurrentModificationException;
+
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class StackExercises<Item> implements Iterable<Item> {
-    private Item a[];
+public class StackExercises<T> implements Iterable<T> {
+    private Node first;
     private int n;
-    private int operations;
 
-    public StackExercises() {
-        this.a = (Item[]) new Object[1];
+    private class Node {
+        T item;
+        Node next;
     }
 
     public boolean isEmpty() {
-        return n == 0;
+        return first == null;
     }
 
     public int size() {
         return n;
     }
 
-    private void resize(int newMax) {
-        Item[] newArr = (Item[]) new Object[newMax];
-        for (int i = 0; i < n; i++) {
-            newArr[i] = a[i];
-        }
-        a = newArr;
+    public void push(T item) {
+        Node oldFirst = first;
+        first = new Node();
+        first.item = item;
+        first.next = oldFirst;
+        n++;
     }
 
-
-    public void push(Item item) {
-        if (n == a.length) resize(2 * a.length);
-        a[n++] = item;
-        operations++;
+    public T peek() {
+        if (isEmpty()) throw new NoSuchElementException("Stack is currently empty");
+        return first.item;
     }
 
-    public Item peek() {
-        if (isEmpty()) {
-            throw new NoSuchElementException("Stack underflow error");
-        }
-        return a[n - 1];
-    }
-
-    public Item pop() {
-        if (isEmpty()) {
-            throw new NoSuchElementException("Stack underflow error");
-        }
-        Item item = a[--n];
-        a[n] = null;
-        if (n > 0 && a.length == n / 4) resize(a.length / 2);
-        operations++;
+    public T pop() {
+        T item = first.item;
+        first = first.next;
+        n--;
         return item;
     }
 
-    public Iterator<Item> iterator() {
-        return new StackIterator();
+
+    public Iterator<T> iterator() {
+        return new ListIterator();
     }
 
-    private class StackIterator implements Iterator<Item> {
-        int i = n - 1;
-        int parentOperations = operations;
+    private class ListIterator implements Iterator<T> {
+        private Node current = first;
 
         public boolean hasNext() {
-            if (parentOperations != operations) {
-                throw new ConcurrentModificationException("Collection was edited during iteration");
-            }
-            return i >= 0;
+            return current != null;
         }
 
-        public Item next() {
-            if (i < 0) {
-                throw new NoSuchElementException();
+        public T next() {
+            if (current == null) {
+                throw new NoSuchElementException("Stack is empty");
             }
-            if (parentOperations != operations) {
-                throw new ConcurrentModificationException("Collection was edited during iteration");
-            }
-            return a[i--];
+            T item = current.item;
+            current = current.next;
+            return item;
         }
     }
 
+    public static void main(String[] args) {
+        StackExercises<String> stack = new StackExercises<>();
+        while (!StdIn.isEmpty()) {
+            String item = StdIn.readString();
+            if (!item.equals("-")) {
+                stack.push(item);
+            } else if (!stack.isEmpty()) {
+                StdOut.print(stack.pop() + " ");
+            }
+        }
+        StdOut.println("(" + stack.size() + " left on stack)");
+    }
 
 }
+

@@ -1,0 +1,15 @@
+    There are an average of two exchanges per item (n items and n exchanges)
+    The maximum number of exchanger for a single item is n - 1
+        Imagine the following array:
+            10 1 2 3 4 5
+        In this case, 10 would be exchanged at each step
+            count = 1
+            1 10 2 3 4 5
+            count = 2
+            1 2 10 3 4 5
+            count = 3
+            1 2 3 10 4 5
+            count = 4
+            1 2 3 4 10 5
+            count = 5
+            1 2 3 4 5 10

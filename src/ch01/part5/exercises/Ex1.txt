@@ -1,0 +1,20 @@
+
+    Counting access in QuickFindUF operations
+    see added printInfo method in QuickFindUF
+
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 0]
+    Number of accesses: 12
+    [0, 1, 2, 4, 4, 5, 6, 7, 8, 0]
+    Number of accesses: 12
+    [0, 1, 2, 4, 4, 8, 6, 7, 8, 0]
+    Number of accesses: 12
+    [0, 1, 2, 4, 4, 8, 6, 2, 8, 0]
+    Number of accesses: 12
+    [0, 1, 1, 4, 4, 8, 6, 1, 8, 0]
+    Number of accesses: 12
+    [0, 1, 1, 4, 4, 1, 6, 1, 1, 0]
+    Number of accesses: 12
+    [4, 1, 1, 4, 4, 1, 6, 1, 1, 4]
+    Number of accesses: 12
+    [1, 1, 1, 1, 1, 1, 6, 1, 1, 1]
+    Number of accesses: 12

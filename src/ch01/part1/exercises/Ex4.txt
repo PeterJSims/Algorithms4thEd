@@ -1,0 +1,12 @@
+1.1.4 What (if anything) is wrong with each of the following statements?
+    a. if (a > b) then c = 0;
+        'then' is not a keyword in java
+
+    b. if a > b { c = 0; }
+        comparisons must be in brackets
+
+    c. if (a > b) c = 0;
+        if c was already declared then nothing, otherwise c needs a type
+
+    d. if (a > b) c = 0 else b = 0;
+        'else' is not a keyword in java

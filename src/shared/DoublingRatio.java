@@ -4,12 +4,10 @@ import ch01.part4.notes.ThreeSumFast;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 public class DoublingRatio {
     // USE THIS TO SEE HOW PERFORMANCE PLATEAUS FOR NEW ALGORITHMS -- REPLACE LINE 21 WITH ALGORITHM CALL
     // CREATE A NEW INPUT GENERATOR IF NEEDED
-    @SuppressFBWarnings("DLS_DEAD_LOCAL_STORE")
     public static double timeTrial(int n) {
         // Time ThreeSum.count() for n random 6-digit integers
         int MAX = 1000000;

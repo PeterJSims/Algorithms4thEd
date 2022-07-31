@@ -1,5 +1,6 @@
 package ch01.part3.exercises;
 
+
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -22,3 +23,4 @@ public class Ex8 {
         StdOut.print("\n Total items: " + stack.size());
     }
 }
+

@@ -1,22 +1,37 @@
 package ch01.part3.exercises;
 
 import edu.princeton.cs.algs4.Stack;
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
 
 public class Parenthesis {
 
-    public boolean checkParenthesis(String s) {
-        Stack<Character> left = new Stack<>();
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (c == '(' || c == '[' || c == '{') {
-                left.push(c);
-            } else if (c == ')' || c == ']' || c == '}') {
-                if (left.isEmpty()) return false;
-                char leftChar = left.pop();
-                String joined = leftChar + "" + c;
-                if (!joined.equals("()") && !joined.equals("[]") && !joined.equals("{}")) return false;
+    public static void takeAndCheckParenthesis() {
+        StdOut.println("Please enter your parenthesis strings:");
+        while (!StdIn.isEmpty()) {
+            String parenthesis = StdIn.readLine();
+            String isBalancedResponse = validateParenthesis(parenthesis) ? "is" : "is *not*";
+            StdOut.println("Your string " + isBalancedResponse + " a balanced string of parenthesis.");
+        }
+    }
+
+    public static boolean validateParenthesis(String p) {
+        Stack<Character> leftBrackets = new Stack<>();
+        for (char c : p.toCharArray()) {
+            if (c == '(' || c == '{' || c == '[') leftBrackets.push(c);
+            else if (c == ')' || c == '}' || c == ']') {
+                if (leftBrackets.isEmpty()) return false;
+                char left = leftBrackets.pop();
+                String pair = left + "" + c;
+                if (!pair.equals("()") && !pair.equals("{}") && !pair.equals("[]")) {
+                    return false;
+                }
             }
         }
-        return left.isEmpty();
+        return leftBrackets.isEmpty();
+    }
+
+    public static void main(String[] args) {
+        takeAndCheckParenthesis();
     }
 }

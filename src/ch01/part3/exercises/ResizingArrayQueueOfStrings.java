@@ -1,5 +1,6 @@
 package ch01.part3.exercises;
 
+
 public class ResizingArrayQueueOfStrings {
     private String[] items;
     private int n;

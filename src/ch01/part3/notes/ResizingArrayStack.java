@@ -70,5 +70,6 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
             }
         }
         StdOut.println("(" + stack.size() + " left on stack)");
+        StdOut.println("Array length o");
     }
 }

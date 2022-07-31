@@ -1,0 +1,4 @@
+running "it was - the best - of times - - - it  was - the - -" in our stack program produces:
+
+was best times of the was the it
+(1 item left on stack)

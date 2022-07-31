@@ -1,0 +1,1 @@
+For an array of length n where items are one of three random values, insertion sort is still quadratic

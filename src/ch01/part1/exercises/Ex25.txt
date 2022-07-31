@@ -1,0 +1,54 @@
+With my mediocre discrete mathematics skills, I am definitely not topping this:
+https://math.stackexchange.com/questions/3520399/proving-correctness-of-euclids-gcd-algorithm-through-induction
+
+From the above:
+
+The key here, quoting from the section Infinite descent in the wikipedia article on mathematical induction, is
+"... there are no infinite decreasing sequences of natural numbers"
+
+Here we provide constructions/hints and leave the organization/exposition of the theory to the interested reader.
+
+Recall that we have the first projection mapping 𝜋1 on ℤ+×ℤ+ defined by:
+
+∀(𝑚,𝑚)∈ℤ+×ℤ+:𝜋1(𝑚,𝑛)=𝑚
+
+Define 𝑃={(𝑚,𝑛)∈ℤ+×ℤ+∣𝑚≥𝑛}. Recall that the set 𝑃 contains the diagonal set
+
+Δℤ+={(𝑑,𝑑)∣𝑑∈ℤ+}.
+
+We define the function 𝐹:𝑃→𝑃 as follows
+
+𝐹(𝑚,𝑛)={(𝑚,𝑛)       if 𝑚=𝑛
+        (𝑚−𝑛,𝑛)   if 𝑚−𝑛≥𝑛
+        (𝑛,𝑚−𝑛)   if 𝑚−𝑛<𝑛}
+
+If (𝑚,𝑛)∈𝑃 we can apply the gcd function. Note that for elements (𝑑,𝑑) in the diagonal Δℤ+,
+
+            gcd(𝑑,𝑑)=𝑑
+
+Now it is well known that
+
+            gcd(𝑚,𝑛)=gcd(𝐹(𝑚,𝑛))
+
+For fixed (𝑠,𝑡) in the domain of 𝐹 we define a sequence
+
+            𝑎𝑘=𝜋1∘𝐹𝑘(𝑠,𝑡)
+
+By using the absurdity of an infinite descent, the sequence (𝑎𝑘) eventually 'stops decreasing and remains constant.
+That happens precisely when the algorithm 𝐹 'hits the diagonal.
+
+So the algorithm 𝐹 'gets us' to the diagonal in a finite number of steps, and from there we can just 'read off' greatest common divisor.
+
+Example: Let 𝑚=28 and 𝑛=10 so that (𝑚,𝑛) belongs to the domain of 𝐹.
+
+𝐹(28,10)=(18,10)
+𝐹(18,10)=(10,8)
+𝐹(10,8)=(8,2)
+𝐹(8,2)=(6,2)
+𝐹(6,2)=(4,2)
+𝐹(4,2)=(2,2) STOP
+
+Of course if you don't want to stop you can continue to apply 𝐹. But the points on the diagonal are exactly
+the fixed points of 𝐹, so you will quickly lose interest.
+
+The point (2,2)∈Δℤ+ and so gcd(28,10)=2.

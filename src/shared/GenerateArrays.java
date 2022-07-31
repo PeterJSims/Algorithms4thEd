@@ -23,4 +23,12 @@ public class GenerateArrays {
         }
         return nums;
     }
+
+    public static double[] generate1dDoublesArr(int n) {
+        double[] doubles = new double[n];
+        for (int i = 0; i < n; i++) {
+            doubles[i] = StdRandom.uniform(0.0, 1.0);
+        }
+        return doubles;
+    }
 }
